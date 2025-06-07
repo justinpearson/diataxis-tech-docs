@@ -12,34 +12,52 @@ This was inspired by the "Diataxis" framework, see [the official site](https://d
 
 ## Summary
 
-Here's my organization method:
+Here's my (very simple) doc organization method:
 
-- 2 sets of docs: one for "users" of the product/service, one for "maintainers" who build/deploy/host the product/service.
-- for each audience (user / maintainer), docs organized into 4 categories:
-	- quick start - minimal working example for a newcomer to the platform. Step-by-step instructions w/ brief explanations. Goal: get something working, show the value, and introduce the user to key concepts.
-	- use cases - showcase what it's good for, once you know what you're doing. beginner, intermediate, advanced.
-	- how-to - step-by-step "recipes" for common uses & troubleshooting.
-	- explanations - longer essays for deeper discussion of important concepts, design decisions, architecture.
+```
+📁 user/
+├── 📄 quick-start.md    # minimal steps to install & see value
+├── 📄 use-cases.md      # examples of what it's good for
+└── 📂 how-to/           # recipes for common usage & troubleshooting
 
-```text
-- user					# asdf
-	- quick-start.md	# asdf
-	- use-cases.md		# asdf
-	- how-to/			# asdf
-- maintainer			# asdf
-	- quick-start.md	# asdf
-	- how-to/			# asdf
-	- explanations/		# asdf
+📁 maintainer/
+├── 📄 quick-start.md    # steps to install development environment
+├── 📂 how-to/           # recipes for common development tasks & debugging
+└── 📂 explanations/     # essays on concepts, design decisions, architecture
 ```
 
-- Note: maintainers need to know everything a user knows, and more. So it's natural for the maintainer docs to link back to the user docs. But user docs shouldn't point to the maintainer docs, because users shouldn't have to know anything about the "guts" of the service.
+Top-level hierarchy asks "user" or "maintainer"? Write for your audience:
+
+| Role         | Needs |
+|--------------|-------------|
+| user     | use the product/service, no knowledge of guts, "it should just work" |
+| maintainer | builds / deploys / hosts the product/service |
 
 
-## Example
+Next, docs organized by "what do you need?":
+
+
+| Doc type | Description |
+|----------|-------------|
+| quick start | Minimal working example for a newcomer to the platform. Step-by-step instructions with brief explanations. Goal: get something working, show the value, and introduce the user to key concepts. |
+| use cases | Showcase what it's good for, once you know what you're doing. Beginner, intermediate, advanced examples. |
+| how-to | Step-by-step "recipes" for common uses & troubleshooting. |
+| explanations | Longer essays for deeper discussion of important concepts, design decisions, architecture. |
+
+
+### Note
+
+- **Linking.** Maintainers need to know everything a User knows, and more. So it's natural for the Maintainer docs to link back to the User docs. But User docs shouldn't point to the Maintainer docs, because Users shouldn't have to know anything about the "guts" of the service.
+
+
+
+## Real Life Example
+
+*(Based on true events)*
 
 A developer productivity team at a web-development tech company offers a command-line tool named "Deven" for other internal software engineers to run common development tasks, like:
 
-- open a Rails console for customer X's live deployment
+- open a Rails console for customer X's live deployment, to debug a prod issue
 - open a database viewer for the QA deployment of app Y
 - download the codebase for (internal) service Z, install it, and start its local dev server on localhost
 
